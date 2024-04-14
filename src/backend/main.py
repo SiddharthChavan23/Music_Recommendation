@@ -1,38 +1,62 @@
 import numpy as np
 import pandas as pd
-from flask import Flask,request,render_template,jsonify
+from flask import Flask, request, render_template, jsonify
 import pickle
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
+from flask_cors import CORS
 
+# Initialize Flask app
 app = Flask(__name__)
+CORS(app)  # Enable Cross-Origin Resource Sharing
+
+# Spotify API credentials
 client_id = '191780d36b8e414a8db1fab6046ac941'
 client_secret = '5d71c172fcef44e48b212c64829fee44'
+
+# Initialize Spotipy client
 client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-# Set up Spotipy with your client ID and client secret
 
-
-
-df = pd.read_csv('src\dataset\df_good.csv',index_col=0)
-spotify_df = pd.read_csv('src\dataset\data_dupli_clean.csv')
+# Read data
+df = pd.read_csv('src/dataset/df_good.csv', index_col=0)  # Main dataset
+spotify_df = pd.read_csv('src/dataset/data_dupli_clean.csv')  # Spotify dataset
 spotify_df.index = spotify_df['track_id']
-spotify_df = spotify_df.drop(['track_id'],axis=1)
-model = pickle.load(open('src\Model\knn_cleaned_model.pkl','rb'))
+spotify_df = spotify_df.drop(['track_id'], axis=1)
+
+# Load model
+model = pickle.load(open('src/Model/knn_cleaned_model.pkl', 'rb'))
 
 
+# Function to recommend songs based on index
 def recommend(idx, model, number_of_recommendations=5):
-    query = spotify_df.loc[idx].to_numpy().reshape(1,-1)
+    query = spotify_df.loc[idx].to_numpy().reshape(1, -1)
     distances, indices = model.kneighbors(query, n_neighbors=number_of_recommendations)
-    recommendations = df[['track_name', 'artists','track_id']].loc[indices[0]].to_dict(orient='records')
+    
+    recommendations = []
+    
+    for index in indices[0]:
+        track_id = df.loc[index, 'track_id']
+        track_info = sp.track(track_id)
+        
+        images = None
+        for image in track_info['album']['images']:
+            if image['height'] == 300 and image['width'] == 300:
+                images = image['url']
+                break
+        
+        recommendation = {
+            'track_name': df.loc[index, 'track_name'],
+            'artists': df.loc[index, 'artists'],
+            'track_id': track_id,
+            'image_url': images
+        }
+        recommendations.append(recommendation)
+
     return recommendations
 
 
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-
+# Route for searching a song
 @app.route('/search', methods=['GET'])
 def search():
     song_title = request.args.get('title')
@@ -59,24 +83,25 @@ def search():
         return jsonify({'error': 'Missing title parameter'})
 
 
-    
-# Now track_ids contains all the track_ids from the results list
-    
-
-    
+# Route for getting recommendations
 @app.route('/recommendations', methods=['GET'])
 def get_recommendations():
     ind = request.args.get('idx', type=int)
     nor = request.args.get('nor', type=int, default=5)
+    
+    if ind is None:
+        return jsonify({'error': 'You must provide a valid index (idx)'}), 400
+    
     idx = df['track_id'].loc[ind]
 
     if idx is None:
-        return jsonify({'error': 'You must provide a valid index (idx)'}), 400
+        return jsonify({'error': 'Invalid track index provided'}), 400
     
     recommendations = recommend(idx, model, nor)
     return jsonify({'recommendations': recommendations})
 
 
+# Route for getting track information
 @app.route('/track/<track_id>', methods=['GET'])
 def get_track_info(track_id):
     # Make a request to get information about the track
@@ -104,11 +129,8 @@ def get_track_info(track_id):
         'song_link': song_link
     }
     
-    return track_data
-
-
-
+    return jsonify(track_data)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True)  # Run the app in debug mode

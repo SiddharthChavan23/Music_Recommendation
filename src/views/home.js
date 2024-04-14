@@ -1,86 +1,97 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { useHistory } from 'react-router-dom'; // Import useHistory from react-router-dom
+import NavigationLinks from '../components/navigation-links';
+import axios from 'axios'; // Import axios for making HTTP requests
+import './home.css';
 
-import { Helmet } from 'react-helmet'
+/**
+ * Home component for the Music Recommendation System.
+ * Allows users to search for songs and displays search results.
+ */
+const Home = () => {
+  // State variables
+  const [searchInput, setSearchInput] = useState(''); // Input for search query
+  const [searchResults, setSearchResults] = useState([]); // Results of search
+  const history = useHistory(); // Initialize useHistory hook for navigation
 
-import NavigationLinks from '../components/navigation-links'
-import './home.css'
+  /**
+   * Handles input change in the search input field.
+   * @param {Event} event - The input change event
+   */
+  const handleInputChange = (event) => {
+    setSearchInput(event.target.value);
+  };
 
-const Home = (props) => {
+  /**
+   * Handles search action by sending a request to the server.
+   */
+  const handleSearch = () => {
+    axios.get('http://127.0.0.1:5000/search', { params: { title: searchInput } })
+      .then(response => {
+        setSearchResults(response.data.results);
+      })
+      .catch(error => {
+        console.error('Error searching:', error);
+      });
+  };
+
+  /**
+   * Handles click on a search result item.
+   * Redirects to recommendation page with selected item's position as a query parameter.
+   * @param {number} position - Position of the clicked item in the search results
+   */
+  const handleClick = (position) => {
+    history.push(`/recommendations?idx=${position}`);
+  };
+
   return (
-    <div className="home-container">
+    <>
+      {/* Helmet for managing document head */}
       <Helmet>
         <title>Music Recommendation System</title>
         <meta property="og:title" content="Jovial Genuine Nightingale" />
       </Helmet>
-      <header data-role="Accordion" className="home-header">
-        <img
-          alt="logo"
-          src="https://media1.tenor.com/m/9_EEizTZePgAAAAd/baby.gif"
-          className="home-image"
-        />
-        <div className="home-separator"></div>
-        <nav className="home-nav"></nav>
-        <div data-role="AccordionHeader" className="home-accordion-header">
-          <svg viewBox="0 0 1024 1024" className="home-icon">
-            <path d="M128 554.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 298.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667zM128 810.667h768c23.552 0 42.667-19.115 42.667-42.667s-19.115-42.667-42.667-42.667h-768c-23.552 0-42.667 19.115-42.667 42.667s19.115 42.667 42.667 42.667z"></path>
-          </svg>
-        </div>
-        <div data-role="AccordionContent" className="home-accordion-content">
-          <div className="home-nav1">
-            <NavigationLinks rootClassName="rootClassName20"></NavigationLinks>
-          </div>
-        </div>
+      {/* Header */}
+      <header className="home-header">
+        {/* Header content */}
       </header>
+      {/* Main content */}
       <div className="home-hero">
-        <span className="home-text">
-          <span>
-            <span>
-            
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: ' ',
-                }}
-              />
-            </span>
-            <span>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: ' ',
-                }}
-              />
-            </span>
-          </span>
-          <br></br>
-          <span>
-            <span>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: ' ',
-                }}
-              />
-            </span>
-            <span>
-              <span
-                dangerouslySetInnerHTML={{
-                  __html: ' ',
-                }}
-              />
-            </span>
-          </span>
-        </span>
-        <button autoFocus="true" className="home-button button">
-          Search
-        </button>
-        <input
-          type="text"
-          placeholder="placeholder"
-          className="home-input input"
-        />
-        <div className="home-container1"></div>
+        {/* Search input and button */}
+        <div className='search-content'>
+          <label htmlFor="songInput">Input Song</label>
+          <input
+            id="songInput"
+            type="text"
+            placeholder="Input Song"
+            className="home-input input"
+            value={searchInput}
+            onChange={handleInputChange}
+          />
+          <button onClick={handleSearch} className="home-button button">Search</button>
+        </div>
+        {/* Display search results */}
+        <div className="home-container1">
+          {/* Map over search results, slice array to ensure only 4 cards per row */}
+          {searchResults.map((result, index) => (
+            index % 4 === 0 && index !== 0 ?
+              <div key={index} className="home-row">
+                {searchResults.slice(index - 4, index).map((item) => (
+                  <div key={item.position} className="home-card" onClick={() => handleClick(item.position)}>
+                    <img src={item.image_url} alt={item.track_name} />
+                    <p>{item.track_name}</p>
+                    <p>{item.artists}</p>
+                  </div>
+                ))}
+              </div>
+              : null
+          ))}
+        </div>
         <div className="home-btn-group"></div>
       </div>
-    </div>
-  )
-}
+    </>
+  );
+};
 
-export default Home
+export default Home;

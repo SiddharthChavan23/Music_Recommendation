@@ -1,21 +1,29 @@
-import React from 'react'
-
-import PropTypes from 'prop-types'
-
-import './feature-card1.css'
+import React from 'react';
+import PropTypes from 'prop-types';
+import './feature-card1.css';
+import { useHistory } from 'react-router-dom';
 
 const FeatureCard1 = (props) => {
+  const history = useHistory(); 
+
+  const handleCardClick = (track_id) => {
+    // Redirect to song-details.js with the id of the clicked song
+    history.push(`/song-details/`);
+    // console.log("Click Success")
+  };
+
   return (
-    <div className={`feature-card1-feature-card ${props.rootClassName} `}>
+    <div className={`feature-card1-feature-card ${props.rootClassName}`} onClick={()=> handleCardClick(props.track_id)}>
       <h2 className="feature-card1-text">{props.title}</h2>
       <img
         alt={props.imageAlt}
         src={props.imageSrc}
         className="feature-card1-image"
       />
+      <p className="feature-card1-artist">{props.artist}</p>
     </div>
-  )
-}
+  );
+};
 
 FeatureCard1.defaultProps = {
   imageSrc:
@@ -23,13 +31,17 @@ FeatureCard1.defaultProps = {
   title: 'Lorem ipsum',
   rootClassName: '',
   imageAlt: 'image',
-}
+  artist: 'Unknown Artist',
+  track_id: '' // Default value for the artist name
+};
 
 FeatureCard1.propTypes = {
   imageSrc: PropTypes.string,
   title: PropTypes.string,
   rootClassName: PropTypes.string,
   imageAlt: PropTypes.string,
-}
+  artist: PropTypes.string,
+  track_id:PropTypes.string // PropType for the artist name
+};
 
-export default FeatureCard1
+export default FeatureCard1;

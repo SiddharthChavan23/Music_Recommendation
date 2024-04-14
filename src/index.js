@@ -18,7 +18,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route component={Home} exact path="/" />
-        <Route component={Recommendation} exact path="/recommendation" />
+        <Route component={Recommendation} exact path="/recommendations" />
         <Route component={SongDetails} exact path="/song-details" />
         <Route component={NotFound} path="**" />
         <Redirect to="**" />
