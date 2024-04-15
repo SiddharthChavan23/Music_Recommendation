@@ -1,6 +1,6 @@
 # Spotify Song Recommendation System
 
-Implementation of web application using Flask![Flask](https://user-images.githubusercontent.com/25181517/183423775-2276e25d-d43d-4e58-890b-edbc88e915f7.png|width=100
+Implementation of web application using Flask![Flask](https://user-images.githubusercontent.com/25181517/183423775-2276e25d-d43d-4e58-890b-edbc88e915f7.png
 )
 , React![React](https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png) with Docker![Docker](https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png)
 
@@ -19,6 +19,8 @@ Before you run this application make sure you have this installed in your machin
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop)
 - [docker-compose](https://docs.docker.com/compose/install/)
+- [NPM](https://www.npmjs.com/)
+
 
 ### Running app as a container on Docker
 
@@ -31,6 +33,31 @@ $ docker login -u "<username>" -p "<password>" docker.io
 
 ```
 
+Create docker-compose:
+
+```
+mkdir Music_Recommendation
+cd Music_Recommendation
+echo > docker-compose.yml [Windows]
+touch docker-compose.yml [Linux]
+```
+
+docker-compose CONFIG:
+
+```
+version: '3'
+services:
+  client:
+    image: siddharthc23/react-flask-app-client:latest
+    ports:
+      - "3000:3000"
+  app:
+    image: siddharthc23/react-flask-app-app:latest
+    ports:
+      - "5000:5000"
+
+```
+
 #### Pull the Docker Image:
 
 ```
@@ -40,9 +67,8 @@ $ docker pull siddharthc23/react-flask-app-api:latest
 
 Run the Docker Container:
 ```
-$ docker run -d -p 3000:3000 siddharthc23/react-flask-app-client:latest
+$ docker-compose up -d
 
-$ docker run -d -p 5000:5000 siddharthc23/react-flask-app-api:latest
 ```
 
 After you run above commands you can open the application from [http://localhost:3000/](http://localhost:3000/)
@@ -74,7 +100,7 @@ $  pip install -r requirements.txt
 
 ```
 
-Client ID and Secret: [![linkedin](https://img.shields.io/badge/Spotify-1ED760?&style=for-the-badge&logo=spotify&logoColor=white)](https://developer.spotify.com/dashboard)
+Client ID and Secret: [![linkedin](https://img.shields.io/badge/Spotify-1ED760?&style=for-the-badge&logo=spotify&logoColor=white)](https://developer.spotify.com/dashboard)(Click above)
 ```
 src
 ├── backend
@@ -111,6 +137,36 @@ $  flask --app main run
 Locally hosted on : http://127.0.0.1:5000/
 
 ```
+
+
+### Project Screenshot
+
+
+Home
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+Search Results
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+Recommendations
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+Song MetaData
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+
+
+
+## Model
+The model diverges from traditional recommendation engines by leveraging song features instead of user interactions. Using Nearest Neighbor models, it compute similarities between songs based on their feature vectors, offering clear and interpretable recommendations.
+
+## Dataset used
+```
+Vatsal Mavani. (n.d.). Spotify Dataset 1921-2020, 160k+ Tracks (Version 1.0) [Data set]. Kaggle. 
+```
+[Link to Dataset](https://www.kaggle.com/datasets/vatsalmavani/spotify-dataset)
+
+
+## Dataset
+
 
 
 
