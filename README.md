@@ -15,7 +15,7 @@ This application will showcase:
 - Flask API that shows routes.
 
 ### Flask API Working:
-![App Screenshot](images/FlowChart)
+![App Screenshot](images/FlowChart.png)
 
 ### Prerequisites
 
