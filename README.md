@@ -13,6 +13,7 @@ This application will showcase:
 
 - React for the frontend.
 - Flask API that shows routes.
+- Spotify API to fetch meta data of the selected song.
 
 ### Flask API Working:
 ![App Screenshot](images/FlowChart.png)
