@@ -170,6 +170,10 @@ Vatsal Mavani. (n.d.). Spotify Dataset 1921-2020, 160k+ Tracks (Version 1.0) [Da
 | track_genre       | Genre of the track                                          |
 
 
-
+## Problems Faced
+| Problem                                     | Solution                                                                                   |
+|---------------------------------------------|-------------------------------------------------------------------------------------------|
+| Docker Compose to Orchestrate Containers    | Went through the Docker Compose documentation to understand and implement orchestration. |
+| Model Not Evaluated                         | As the model is not content-based and does not track user patterns, evaluation metrics are not applicable. Plan to implement user engagement tracking for evaluation in the future. |
 
 
