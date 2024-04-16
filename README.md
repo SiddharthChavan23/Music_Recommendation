@@ -49,7 +49,7 @@ After you run above commands you can open the application from [http://localhost
 
 
 
-### Running app on Local Machine
+## Running app on Local Machine
 
 Follow these steps to set up and run the application on your local machine:
 
