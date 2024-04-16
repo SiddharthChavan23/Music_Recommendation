@@ -129,7 +129,9 @@ Song MetaData
 
 
 
-## Model
+## Model 
+[Training Notebook](model.ipynb)
+
 The model diverges from traditional recommendation engines by leveraging song features instead of user interactions. Using Nearest Neighbor models, it compute similarities between songs based on their feature vectors, offering clear and interpretable recommendations.
 
 ## Dataset used
