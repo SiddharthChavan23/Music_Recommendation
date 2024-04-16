@@ -115,7 +115,7 @@ client_secret = ''
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](/images/spotify_api.png)
 
 
 Install Dependencies(Flask):
