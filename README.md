@@ -37,12 +37,16 @@ $ docker login -u "<username>" -p "<password>" docker.io
 $ docker pull siddharthc23/react-flask-app-client:latest   
 $ docker pull siddharthc23/react-flask-app-api:latest   
 ```
+Docker Image Pulled:
+![App Screenshot](/images/Docker1.png)
 
 Run the Docker Container:
 ```
 $ docker-compose up -d
 
 ```
+Docker Container:
+![App Screenshot](/images/Docker2.png)
 
 After you run above commands you can open the application from [http://localhost:3000/](http://localhost:3000/)
 
