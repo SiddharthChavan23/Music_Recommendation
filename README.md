@@ -46,6 +46,9 @@ $ docker-compose up -d
 
 After you run above commands you can open the application from [http://localhost:3000/](http://localhost:3000/)
 
+
+
+
 ### Running app on Local Machine
 
 Follow these steps to set up and run the application on your local machine:
