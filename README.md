@@ -9,8 +9,13 @@ This project consists of Flask application for the backend API, React for client
 
 This application will showcase:
 
-- Flask application with Users and Auth endpoint
-- NextJS application that showing normal route and authenticated routes.
+This application will showcase:
+
+- React for the frontend.
+- Flask API that shows routes.
+
+### Flask API Working:
+![App Screenshot](images/FlowChart)
 
 ### Prerequisites
 
