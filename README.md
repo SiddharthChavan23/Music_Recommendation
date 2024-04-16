@@ -117,14 +117,14 @@ Locally hosted on : http://127.0.0.1:5000/
 
 
 Home
-![App Screenshot](/images/Home1)
+![App Screenshot](/images/Home1.png)
 
 Search Results
-![App Screenshot](/images/Home2)
+![App Screenshot](/images/Home2.png)
 Recommendations
-![App Screenshot](/images/Home3)
+![App Screenshot](/images/Home3.png)
 Song MetaData
-![App Screenshot](/images/Home4)
+![App Screenshot](/images/Home4.png)
 
 
 
