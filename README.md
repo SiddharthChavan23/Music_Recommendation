@@ -141,8 +141,31 @@ Vatsal Mavani. (n.d.). Spotify Dataset 1921-2020, 160k+ Tracks (Version 1.0) [Da
 [Link to Dataset](https://www.kaggle.com/datasets/vatsalmavani/spotify-dataset)
 
 
-## Dataset
+### Dataset Description
 
+
+| Column Name       | Description                                                |
+|-------------------|------------------------------------------------------------|
+| track_id          | Unique identifier for each track                            |
+| artists           | Names of the artists associated with the track              |
+| album_name        | Name of the album the track belongs to                      |
+| track_name        | Name of the track                                          |
+| popularity        | Popularity score of the track                               |
+| duration_ms       | Duration of the track in milliseconds                       |
+| explicit          | Indicator of explicit content (1 for explicit, 0 for not explicit) |
+| danceability      | Danceability score of the track                             |
+| energy            | Energy level of the track                                   |
+| key               | Key of the track                                            |
+| loudness          | Loudness level of the track                                  |
+| mode              | Mode of the track (Major or Minor)                          |
+| speechiness       | Speechiness score of the track                              |
+| acousticness      | Acousticness score of the track                             |
+| instrumentalness  | Instrumentalness score of the track                         |
+| liveness          | Liveness score of the track                                 |
+| valence           | Valence score of the track                                  |
+| tempo             | Tempo of the track                                          |
+| time_signature    | Time signature of the track                                 |
+| track_genre       | Genre of the track                                          |
 
 
 
