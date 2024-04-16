@@ -32,32 +32,6 @@ Login to Docker:
 $ docker login -u "<username>" -p "<password>" docker.io 
 
 ```
-
-Create docker-compose:
-
-```
-mkdir Music_Recommendation
-cd Music_Recommendation
-echo > docker-compose.yml [Windows]
-touch docker-compose.yml [Linux]
-```
-
-docker-compose CONFIG:
-
-```
-version: '3'
-services:
-  client:
-    image: siddharthc23/react-flask-app-client:latest
-    ports:
-      - "3000:3000"
-  app:
-    image: siddharthc23/react-flask-app-app:latest
-    ports:
-      - "5000:5000"
-
-```
-
 #### Pull the Docker Image:
 
 ```
@@ -115,7 +89,7 @@ client_secret = ''
 
 ## Screenshots
 
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](/images/spotify_api.png)
 
 
 Install Dependencies(Flask):
@@ -143,14 +117,14 @@ Locally hosted on : http://127.0.0.1:5000/
 
 
 Home
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](/images/Home1)
 
 Search Results
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](/images/Home2)
 Recommendations
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](/images/Home3)
 Song MetaData
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](/images/Home4)
 
 
 
