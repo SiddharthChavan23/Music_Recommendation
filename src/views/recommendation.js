@@ -1,14 +1,10 @@
 import React, { useState,useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { useHistory } from 'react-router-dom'; // Import useHistory from react-router-dom
+import { useHistory,link } from 'react-router-dom'; // Import useHistory from react-router-dom
 import NavigationLinks from '../components/navigation-links';
 import axios from 'axios'; // Import axios for making HTTP requests
 import FeatureCard1 from '../components/feature-card1'
 import './recommendation.css'
-
-
-
-
 
 const Recommendation = (props) => {
     const [searchInput, setSearchInput] = useState('');
@@ -40,7 +36,7 @@ const Recommendation = (props) => {
   return (
     <div className="recommendation-container">
       <Helmet>
-        <title>Recommendation - Jovial Genuine Nightingale</title>
+        <title>Recommendation</title>
         <meta
           property="og:title"
           content="Recommendation - Jovial Genuine Nightingale"

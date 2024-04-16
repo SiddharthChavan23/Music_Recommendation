@@ -1,0 +1,14 @@
+# Use an official Node runtime as the base image
+FROM node:14
+WORKDIR /app
+COPY package*.json .
+RUN npm install
+COPY public/ /app/public/
+COPY src/views/ /app/src/views/
+COPY src/components/ /app/src/components/
+COPY src/index.js /app/src/
+COPY src/style.css /app/src/
+RUN npm run build
+COPY craco.config.js .
+EXPOSE 3000
+CMD ["npm", "start"]

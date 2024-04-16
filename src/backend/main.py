@@ -11,18 +11,20 @@ app = Flask(__name__)
 CORS(app)  # Enable Cross-Origin Resource Sharing
 
 # Spotify API credentials
-client_id = '191780d36b8e414a8db1fab6046ac941'
-client_secret = '5d71c172fcef44e48b212c64829fee44'
+client_id = ''
+client_secret = ''
 
 # Initialize Spotipy client
 client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
 sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-# Read data
+
+
 df = pd.read_csv('src/dataset/df_good.csv', index_col=0)  # Main dataset
 spotify_df = pd.read_csv('src/dataset/data_dupli_clean.csv')  # Spotify dataset
 spotify_df.index = spotify_df['track_id']
 spotify_df = spotify_df.drop(['track_id'], axis=1)
+
 
 # Load model
 model = pickle.load(open('src/Model/knn_cleaned_model.pkl', 'rb'))
@@ -55,6 +57,11 @@ def recommend(idx, model, number_of_recommendations=5):
 
     return recommendations
 
+
+# Route for checking if the API is working
+@app.route('/', methods=['GET'])
+def api_working():
+    return jsonify({'message': 'API is working!'}), 200
 
 # Route for searching a song
 @app.route('/search', methods=['GET'])

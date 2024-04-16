@@ -4,10 +4,12 @@ import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './song-details.css';
 
+
+
 const SongDetails = () => {
   const [songdata, setSongData] = useState({});
   const location = useLocation();
-  const idx = "51R5mPcJjOnfv9lKY1u5sW";
+  const trackId = new URLSearchParams(location.search).get('track_id');
   const msToTime = (duration) => {
     const minutes = Math.floor(duration / 60000);
     const seconds = ((duration % 60000) / 1000).toFixed(0);
@@ -17,16 +19,16 @@ const SongDetails = () => {
   useEffect(() => {
     async function fetchDetails() {
       try {
-        const response = await axios.get(`http://127.0.0.1:5000/track/${idx}`);
+        const response = await axios.get(`http://127.0.0.1:5000/track/${trackId}`);
         setSongData(response.data);
       } catch (error) {
         console.error('Error fetching song details:', error);
       }
     }
-    if (idx) {
+    if (trackId) {
       fetchDetails();
     }
-  }, [idx]);
+  }, [trackId]);
 
   return (
     <div className="song-details-container">

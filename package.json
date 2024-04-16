@@ -2,7 +2,6 @@
   "name": "jovial-genuine-nightingale",
   "version": "1.0.0",
   "private": true,
-  "proxy": "http://localhost:5000",
   "dependencies": {
     "@craco/craco": "^7.0.0-alpha.0",
     "axios": "^1.6.8",
@@ -11,7 +10,9 @@
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^5.2.0",
-    "react-spotify-web-playback": "^0.14.4"
+    "react-spotify-web-playback": "^0.14.4",
+    "react-tsparticles": "^2.12.2",
+    "tsparticles": "^3.3.0"
   },
   "scripts": {
     "start": "craco start",

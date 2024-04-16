@@ -8,7 +8,7 @@ const FeatureCard1 = (props) => {
 
   const handleCardClick = (track_id) => {
     // Redirect to song-details.js with the id of the clicked song
-    history.push(`/song-details/`);
+    history.push(`/song-details?track_id=${track_id}`);
     // console.log("Click Success")
   };
 

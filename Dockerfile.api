@@ -1,0 +1,17 @@
+FROM python:3.12
+
+WORKDIR /app
+# Transfer Code
+COPY src/backend/main.py .
+# Dataset and Model
+COPY src/dataset/*.csv ./src/dataset/
+COPY src/Model/knn_cleaned_model.pkl ./src/Model/
+# Dependencies
+COPY requirements.txt .
+RUN pip install -r requirements.txt && \
+    pip install gunicorn
+
+EXPOSE 5000
+
+# Run
+CMD ["gunicorn", "-b", ":5000", "main:app"]
