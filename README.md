@@ -1,8 +1,7 @@
 # Spotify Song Recommendation System
 
-Implementation of web application using Flask![Flask](https://user-images.githubusercontent.com/25181517/183423775-2276e25d-d43d-4e58-890b-edbc88e915f7.png
-)
-, React![React](https://user-images.githubusercontent.com/25181517/183897015-94a058a6-b86e-4e42-a37f-bf92061753e5.png) with Docker![Docker](https://user-images.githubusercontent.com/25181517/117207330-263ba280-adf4-11eb-9b97-0ac5b40bc3be.png)
+Implementation of web application using ![Flask](https://img.shields.io/badge/flask-%23000.svg?style=for-the-badge&logo=flask&logoColor=white)
+ ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white) ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
 
 ## Getting Started
 
@@ -38,16 +37,23 @@ $ docker login -u "<username>" -p "<password>" docker.io
 $ docker pull siddharthc23/react-flask-app-client:latest   
 $ docker pull siddharthc23/react-flask-app-api:latest   
 ```
+Docker Image Pulled:
+![App Screenshot](/images/Docker1.png)
 
 Run the Docker Container:
 ```
 $ docker-compose up -d
 
 ```
+Docker Container:
+![App Screenshot](/images/Docker2.png)
 
 After you run above commands you can open the application from [http://localhost:3000/](http://localhost:3000/)
 
-### Running app on Local Machine
+
+
+
+## Running app on Local Machine
 
 Follow these steps to set up and run the application on your local machine:
 
@@ -117,19 +123,21 @@ Locally hosted on : http://127.0.0.1:5000/
 
 
 Home
-![App Screenshot](/images/Home1)
+![App Screenshot](/images/Home1.png)
 
 Search Results
-![App Screenshot](/images/Home2)
+![App Screenshot](/images/Home2.png)
 Recommendations
-![App Screenshot](/images/Home3)
+![App Screenshot](/images/Home3.png)
 Song MetaData
-![App Screenshot](/images/Home4)
+![App Screenshot](/images/Home4.png)
 
 
 
 
-## Model
+## Model 
+[Training Notebook](Model.ipynb)
+
 The model diverges from traditional recommendation engines by leveraging song features instead of user interactions. Using Nearest Neighbor models, it compute similarities between songs based on their feature vectors, offering clear and interpretable recommendations.
 
 ## Dataset used
@@ -139,10 +147,37 @@ Vatsal Mavani. (n.d.). Spotify Dataset 1921-2020, 160k+ Tracks (Version 1.0) [Da
 [Link to Dataset](https://www.kaggle.com/datasets/vatsalmavani/spotify-dataset)
 
 
-## Dataset
+### Dataset Description
 
 
+| Column Name       | Description                                                |
+|-------------------|------------------------------------------------------------|
+| track_id          | Unique identifier for each track                            |
+| artists           | Names of the artists associated with the track              |
+| album_name        | Name of the album the track belongs to                      |
+| track_name        | Name of the track                                          |
+| popularity        | Popularity score of the track                               |
+| duration_ms       | Duration of the track in milliseconds                       |
+| explicit          | Indicator of explicit content (1 for explicit, 0 for not explicit) |
+| danceability      | Danceability score of the track                             |
+| energy            | Energy level of the track                                   |
+| key               | Key of the track                                            |
+| loudness          | Loudness level of the track                                  |
+| mode              | Mode of the track (Major or Minor)                          |
+| speechiness       | Speechiness score of the track                              |
+| acousticness      | Acousticness score of the track                             |
+| instrumentalness  | Instrumentalness score of the track                         |
+| liveness          | Liveness score of the track                                 |
+| valence           | Valence score of the track                                  |
+| tempo             | Tempo of the track                                          |
+| time_signature    | Time signature of the track                                 |
+| track_genre       | Genre of the track                                          |
 
 
+## Problems Faced
+| Problem                                     | Solution                                                                                   |
+|---------------------------------------------|-------------------------------------------------------------------------------------------|
+| Docker Compose to Orchestrate Containers    | Went through the Docker Compose documentation to understand and implement orchestration. |
+| Model Not Evaluated                         | As the model is not content-based and does not track user patterns, evaluation metrics are not applicable. Plan to implement user engagement tracking for evaluation in the future. |
 
 
