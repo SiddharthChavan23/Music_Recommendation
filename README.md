@@ -117,14 +117,14 @@ Locally hosted on : http://127.0.0.1:5000/
 
 
 Home
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](/images/Home1)
 
 Search Results
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](/images/Home2)
 Recommendations
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](/images/Home3)
 Song MetaData
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+![App Screenshot](/images/Home4)
 
 
 
