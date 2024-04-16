@@ -32,32 +32,6 @@ Login to Docker:
 $ docker login -u "<username>" -p "<password>" docker.io 
 
 ```
-
-Create docker-compose:
-
-```
-mkdir Music_Recommendation
-cd Music_Recommendation
-echo > docker-compose.yml [Windows]
-touch docker-compose.yml [Linux]
-```
-
-docker-compose CONFIG:
-
-```
-version: '3'
-services:
-  client:
-    image: siddharthc23/react-flask-app-client:latest
-    ports:
-      - "3000:3000"
-  app:
-    image: siddharthc23/react-flask-app-app:latest
-    ports:
-      - "5000:5000"
-
-```
-
 #### Pull the Docker Image:
 
 ```
