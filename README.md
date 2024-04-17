@@ -53,6 +53,7 @@ $ docker run -d -p 5000:5000 siddharthc23/react-flask-app-api:latest
 
 ```
 Docker Container:
+
 ![App Screenshot](/images/Docker2.png)
 
 After you run above commands you can open the application from [http://localhost:3000/](http://localhost:3000/)
