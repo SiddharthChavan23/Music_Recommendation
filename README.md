@@ -5,7 +5,7 @@ Implementation of web application using ![Flask](https://img.shields.io/badge/fl
 
 ## Getting Started
 
-This project consists of Flask application for the backend API, React for client side application.This project also use `docker-compose` to make it easy run all of the container at once.
+This project consists of Flask application for the backend API, React for client side application.This project also use `docker-orchestration` to make it easy run all of the container at once.
 
 This application will showcase:
 
