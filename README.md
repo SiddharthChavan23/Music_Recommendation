@@ -48,7 +48,8 @@ Docker Image Pulled:
 
 Run the Docker Container:
 ```
-$ docker-compose up -d
+$ docker run -d -p 3000:3000 siddharthc23/react-flask-app-client:latest
+$ docker run -d -p 5000:5000 siddharthc23/react-flask-app-api:latest
 
 ```
 Docker Container:
