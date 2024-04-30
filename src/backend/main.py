@@ -11,8 +11,8 @@ app = Flask(__name__)
 CORS(app)  # Enable Cross-Origin Resource Sharing
 
 # Spotify API credentials
-client_id = ''
-client_secret = ''
+client_id = '191780d36b8e414a8db1fab6046ac941'
+client_secret = '5d71c172fcef44e48b212c64829fee44'
 
 # Initialize Spotipy client
 client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
